@@ -1,0 +1,42 @@
+<!--文章详情-->
+<view class="container">
+  <scroll-view scroll-y="true"  scroll-with-animation="true" class='blog-list' lower-threshold="50" bindscrolltolower="loadMore">
+
+<!--title  -->
+  <view class='blogs-title' style='background:{{color}}'>
+   <view>
+      <text class='h3'>{{title}}</text>
+      <text class='hr'></text>
+      <text class='p'>{{desc}}</text>
+   </view>
+    
+  </view>
+  <!--list  -->
+     <view class='blog-item' data-title="{{item.title}}" data-uuid="{{item.uuid}}" bindtap='gotoDetail' wx:for="{{blogs}}" wx:key="index">
+       
+       
+       <view class='blog-item-left'>
+         <view class='blog-img' style="background:url('{{item.pic}}') center;background-size:cover;"></view>
+       </view>
+
+       <view class='blog-item-right'>
+          <text>{{item.title}}</text>
+          <view class="blog-info">
+            <view>
+              <image src="/images/time.png"></image>
+              <text>{{item.time}}</text>
+            </view>
+            <view>
+              <image src="/images/msg.png"></image>
+              <text>{{item.msg}}</text>
+            </view>
+            <view>
+              <image src="/images/eye.png"></image>
+              <text>{{item.eye}}</text>
+            </view>
+          </view>
+       </view>
+     </view>
+     <view class='more' style="visibility:{{isShow==true?'visible':'hidden'}}">{{!isMore==true?'没有更多数据了':'正在加载...'}}</view>
+</scroll-view>
+</view>

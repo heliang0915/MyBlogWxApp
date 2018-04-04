@@ -1,0 +1,51 @@
+<!--文章详情-->
+<view class="container">
+  <!--标题  -->
+  <view class='blog-title'>
+    <text>{{blog.title}}</text>
+    <view class='blog-info'>
+       <image src="/images/time.png"></image>
+       <text>{{blog.date}}</text>
+       <image src="/images/msg.png"></image>
+       <text>{{blog.pubUser}}</text>
+       <image src="/images/eye.png"></image>
+       <text>{{blog.channelName}}</text>
+    </view>
+  </view>
+  <!--正文区  -->
+  <view class='blog-content'>
+    <view wx:for="{{blog.contentAry}}"  wx:key="index">
+        <image wx:if="{{item.type=='image'}}" src="{{item.text}}"></image>
+        <view class='br' wx:elif="{{item.text==''}}"></view>
+        <text wx:else>{{item.text}}</text>
+    </view>
+  </view>
+  <!--评论区  -->
+  <view class="comment-area">
+      <view class="comment-title">
+        <text>评论交流</text>
+      </view>
+      <view class="comment-content">
+          <text class='comment-total'>有{{ary.length}}条评论</text>
+          <view class='comment-list'>
+             <view class='comment-item' wx:key="index" wx:for="{{ary}}">
+                <view class="user-info">
+                  <view>
+                      <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522243775023&di=cb5e5f9679153add5f237ed0cb5b94b4&imgtype=0&src=http%3A%2F%2Fpic25.photophoto.cn%2F20121216%2F0010023949794270_b.jpg"></image>
+                      <text>{{item.userName}}</text>
+                  </view>
+                  <text>{{item.day}}</text>
+                </view>
+                <text class='comment-detail'>{{item.comment}}</text>
+                <text class='reply-detail'>张三回复李四:{{item.reply}}</text>
+             </view>
+          </view>
+      </view>
+      
+  </view>
+  <!--发送评论-->
+  <view class="publish">
+    <input placeholder="输入评论..." cursor-spacing="200" bindinput="inputPublish"  placeholder-style="color:#ccc"  />
+    <text bindtap='send'>发送</text>
+  </view>  
+</view>

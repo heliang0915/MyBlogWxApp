@@ -1,0 +1,48 @@
+/**blogs.wxss**/
+.container{
+  background: #FFF;
+  padding: 0;
+
+}
+.blog-list{
+  height: 100%;
+  /* background: red; */
+}
+.blogs-title{
+    background: #E6A23C;
+    width: 100%;
+    color: #FFF;
+    padding:30rpx;
+    height: 200rpx;
+    display: flex;
+    /* justify-content: center; */
+}
+
+.blogs-title view{
+   padding-top: 80rpx;
+   width: 90%;
+   line-height: 40rpx;
+   padding-left: 10rpx;
+}
+
+.blogs-title view .h3{
+    font-size: 46rpx;
+    text-align: left;
+    display: block;
+}
+.blogs-title view .hr{
+   width: 60rpx;
+   height: 4rpx;
+   background: #FFF;
+   display: block;
+   margin-top: 20rpx;
+   margin-bottom: 12rpx;
+}
+.blogs-title view .p{
+    font-size: 34rpx;
+     display: block;
+    
+}
+.blog-list {
+  padding:0;
+}

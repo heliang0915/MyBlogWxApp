@@ -1,0 +1,144 @@
+/**detail.wxss**/
+.container{
+  margin:0 30rpx;
+}
+.blog-title{
+  font-size: 38rpx;
+  margin-top:40rpx;
+  width: 100%;
+  /* font-weight: bold; */
+  line-height: 60rpx;
+  border-bottom: 1px solid #eee;
+}
+.blog-info{
+   display: flex;
+   font-size: 24rpx;
+   color: #8a8a8a;
+   margin-top:10rpx;
+   align-items: center;
+}
+.blog-info text{
+  margin-right: 20rpx;
+}
+.blog-info image{
+   width: 25rpx;
+   height: 25rpx;
+   margin-right: 10rpx;
+}
+
+.blog-content{
+  text-align: left;
+  width: 100%;
+  margin-top: 40rpx;
+  font-size: 30rpx;
+  font-family: '微软雅黑';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom:1px solid #eee;
+}
+.blog-content text{
+  line-height: 50rpx;
+  text-indent: 2em;
+}
+.blog-content image{
+  height: 450rpx;
+  margin-top:30rpx;
+  margin-bottom:30rpx;
+  margin-left: 10px;
+   margin-right: 10px;
+}
+.comment-area{
+  width: 100%;
+  margin-top: 38rpx;
+  font-size: 30rpx;
+}
+.comment-title{
+  text-align: left;
+  font-size: 28rpx;
+  padding-bottom: 14rpx;
+  border-bottom: 1px solid #eee;
+}
+.comment-title text{
+   padding-bottom: 14rpx;
+   border-bottom: 2rpx solid #000;
+}
+.comment-content{
+  font-size: 24rpx;
+  color: #aaa;
+  margin-top: 20rpx;
+}
+.comment-total{
+  margin-top: 40rpx;
+}
+.comment-list{
+   margin-top:30rpx;
+}
+.comment-item{
+  margin-bottom:16rpx;
+  min-height: 100rpx;
+  background: #eee;
+  border-radius: 5px;
+  padding:16rpx;
+  display: flex;
+  flex-direction: column;
+}
+.comment-item:nth-last-child(1){
+  margin-bottom:150rpx;
+}
+.user-info{
+    display: flex;
+    justify-content: space-between;
+}
+.user-info text{
+   margin-left: 12rpx;
+   font-size: 26rpx;
+}
+.user-info image{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+}
+.user-info  view{
+  display: flex;
+  align-items: center;
+}
+.comment-detail{
+   color: #000;
+   margin: 10rpx 0 0 60rpx;
+}
+.reply-detail{
+  margin: 10rpx 0 0 60rpx;
+}
+.line{
+  text-align: center;
+  width: 100%;
+}
+.publish{
+  display: flex;
+  font-size: 24rpx;
+  width: 100%; 
+  padding: 10rpx 40rpx;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #FFF;
+  border-top: 1px solid #eee;
+}
+
+.publish input{
+   flex: 4;
+   background: #eee;
+   padding:16rpx 20rpx;
+   margin-right: 20rpx;
+   border-radius: 5px;
+}
+.publish text{
+  padding: 0;
+  flex: 1;
+}
+.br{
+  height: 60rpx;
+  width: 100%;
+}

@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<view class="container">
+    <view class='channel-list'>
+       <view class='channel-item' data-desc="{{item.note}}" data-color="{{item.color}}" data-uuid="{{item.uuid}}" data-title="{{item.name}}" bindtap='gotoBlogList' style="background:{{item.color}}" wx:key="index" wx:for="{{channels}}">
+            <text class='channel-title'>{{item.name}}</text>
+            <text class='channel-desc'>{{item.note}}</text>
+       </view>
+    </view>
+</view>
