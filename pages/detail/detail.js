@@ -6,6 +6,9 @@ Page({
   data: {
     uuid:'',
     publishTxt:'',
+    playholder:'输入评论...',
+    pid:'',//回复上级ID
+    type:1,//默认是评论
     blog:{},
     ary:[{
       userName:"张三",
@@ -35,15 +38,61 @@ Page({
       publishTxt: e.detail.value
     })
   },
+  replay:function(e){
+    console.log(e.currentTarget.dataset);
+    let { name,uuid} = e.currentTarget.dataset;
+
+      this.setData({
+        playholder: `回复${name}`,
+        type: 2,
+        pid: uuid
+      })
+  },
+
+  //设置当前为评论状态
+  setComment(e){
+    this.setData({
+      playholder: `输入评论...`,
+      type:1
+    })
+  },
+
   //发送评论
   send:function(){
-    let { publishTxt}=this.data;
+    let { publishTxt, blog, type,pid}=this.data;
+    let { userInfo}=app.globalData;
     // this.
     // console.log(this.data.publishTxt);
-    wx.showToast({
-      title: publishTxt,
-      icon:'none'
-    })
+    
+     let comment={};
+     comment.content = publishTxt;
+     comment.blogId=blog.uuid;
+     comment.type = type;
+     comment.userId =app.globalData.openid;
+     comment.userName = app.globalData.userInfo.nickName;
+     comment.source=1;//微信用户
+     comment.pid = pid;
+     console.log(comment);
+    
+     fetch.post("comment/save", comment, true).then((data) => {
+        console.log(data);
+        let title = type == 1 ? "评论成功" : "回复成功";
+        if (data!="ok"){
+          title=data;
+        }
+        this.setData({
+          publishTxt: ''
+        })
+        wx.showToast({
+          title,
+          // icon:'none',
+          duration: 2000
+        })
+        setTimeout(()=>{
+          this.getComments()
+        },2000)
+    });
+
   },
   getBlogContent:function(){
     let { uuid } = this.data;
@@ -51,8 +100,23 @@ Page({
         this.setData({
           blog: data.module
         })
+        this.getComments();
       })
   },
+  // 获取评论列表
+ getComments(){
+   let { blog } = this.data;
+  //  console.log(blog);
+    // let {}=this.data;
+      
+   fetch.get(`comment/getComments/${blog.uuid}`).then((data) => {
+    //  console.log(data);
+      this.setData({
+        ary: data
+      })
+    })
+ },
+
   onLoad: function (option) {
     // console.log(option)
     let {title,uuid}=option;
@@ -64,5 +128,6 @@ Page({
       title: option.title
     })
     this.getBlogContent();
+    
   }
 })
