@@ -12,10 +12,9 @@
     background: #E6A23C;
     width: 100%;
     color: #FFF;
-    padding:30rpx;
-    height: 200rpx;
+    padding:20px;
+    height: 100px;
     display: flex;
-    /* justify-content: center; */
 }
 
 .blogs-title view{
@@ -26,7 +25,7 @@
 }
 
 .blogs-title view .h3{
-    font-size: 46rpx;
+    font-size: 38rpx;
     text-align: left;
     display: block;
 }
@@ -39,10 +38,30 @@
    margin-bottom: 12rpx;
 }
 .blogs-title view .p{
-    font-size: 34rpx;
+    font-size: 30rpx;
      display: block;
     
 }
 .blog-list {
   padding:0;
+}
+
+.nodata{
+   font-size: 24rpx;
+   display: flex;
+   flex-direction: column;
+   padding-top: 100rpx;
+   /* justify-content: center; */
+   align-items: center;
+   flex-wrap: wrap;
+   background: #f1f1f1;
+   /* height: 846rpx; */
+}
+.nodata image{
+  /* flex: 1; */
+  width: 120rpx;
+  height: 120rpx;
+}
+.nodata text{
+  /* flex:1 */
 }

@@ -7,7 +7,7 @@
    <view>
       <text class='h3'>{{title}}</text>
       <text class='hr'></text>
-      <text class='p'>{{desc}}</text>
+      <text class='p'>{{key==''?'':'搜索关键字:'}}{{desc}}</text>
    </view>
     
   </view>
@@ -37,6 +37,14 @@
           </view>
        </view>
      </view>
-     <view class='more' style="visibility:{{isShow==true?'visible':'hidden'}}">{{!isMore==true?'没有更多数据了':'正在加载...'}}</view>
+     <view class='nodata' style='height:{{contentHeight}}px' wx:if="{{blogs.length==0}}">
+        <image src='/images/ku.png'></image>
+        <text>暂无数据</text>
+     </view>
+     <view wx:else class='more' style="visibility:{{isShow==true?'visible':'hidden'}}">
+     {{isMore?'正在加载...':'没有更多数据了'}}
+     <!-- {{!isMore==true?'没有更多数据了':'正在加载...'}} -->
+     </view>
+
 </scroll-view>
 </view>

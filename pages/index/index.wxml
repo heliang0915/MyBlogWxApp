@@ -8,21 +8,22 @@
     </block>
   </swiper>
   <view class='search-view'>
-        <input class='index-search' placeholder-style="color:#ccc" placeholder="搜索你感兴趣的内容" />
-        <image src="/images/search.png">搜索</image>
+        <input class='index-search' bindinput='searchKey' placeholder-style="color:#ccc" placeholder="搜索你感兴趣的内容" />
+        <image src="/images/search.png" bindtap='gotoSearchList'>搜索</image>
   </view>
   <!--list -->
-  <scroll-view scroll-y="true"  scroll-with-animation="true" class='blog-list' lower-threshold="50" bindscrolltolower="loadMore">
+  <scroll-view scroll-y="true" style='height:{{contentHeight}}px' scroll-with-animation="true" class='blog-list' lower-threshold="50" bindscrolltolower="loadMore">
      <view class='blog-item' data-title="{{item.title}}" data-uuid="{{item.uuid}}" bindtap='gotoDetail' wx:for="{{blogs}}" wx:key="index">
        <view class='blog-item-left'>
-         <view class='blog-img' style="background:url('{{item.pic}}') center;background-size:cover;"></view>
+         <view class='blog-img' style="background:url('{{item.pic}}?w=98') center;background-size:cover;">
+         </view>
        </view>
        <view class='blog-item-right'>
           <text>{{item.title}}</text>
           <view class="blog-info">
             <view>
               <image src="/images/time.png"></image>
-              <text>{{item.time}}</text>
+              <text>{{item.date}}</text>
             </view>
             <view>
               <image src="/images/msg.png"></image>

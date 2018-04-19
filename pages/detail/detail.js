@@ -1,7 +1,7 @@
-//index.js
 //获取应用实例
 const app = getApp()
 let fetch = require("../../utils/fetch.js");
+let WxParse = require('../../lib/wxParse/wxParse.js');
 Page({
   data: {
     uuid:'',
@@ -10,27 +10,8 @@ Page({
     pid:'',//回复上级ID
     type:1,//默认是评论
     blog:{},
-    ary:[{
-      userName:"张三",
-      day:'1天前',
-      comment:'这个熊掌号是干啥的',
-      reply:'因为采集站更新快内容也相对有热点性,长期下来整站都是采集内容'
-    }, {
-      userName: "李四",
-      day: '1天前',
-      comment: '这个熊掌号是干啥的~',
-      reply: '因为采集站更新快内容也相对有热点性,长期下来整站都是采集内容'
-      }, {
-        userName: "鸟叔",
-        day: '1天前',
-        comment: '这个熊掌号是干啥的？',
-        reply: '因为采集站更新快内容也相对有热点性,长期下来整站都是采集内容'
-    }, {
-      userName: "明月登楼",
-      day: '1天前',
-      comment: '这个熊掌号是干啥的!',
-      reply: '因为采集站更新快内容也相对有热点性,长期下来整站都是采集内容'
-    }]
+    focus:false,
+    ary:[]
   },
   //输入文字
   inputPublish: function(e) {
@@ -41,29 +22,28 @@ Page({
   replay:function(e){
     console.log(e.currentTarget.dataset);
     let { name,uuid} = e.currentTarget.dataset;
-
-      this.setData({
-        playholder: `回复${name}`,
-        type: 2,
-        pid: uuid
-      })
+    this.setData({
+      focus:true,
+      playholder: `回复${name}`,
+      type: 2,
+      pid: uuid
+    })
   },
 
   //设置当前为评论状态
   setComment(e){
     this.setData({
+      focus: false,
       playholder: `输入评论...`,
       type:1
     })
+
   },
 
   //发送评论
   send:function(){
     let { publishTxt, blog, type,pid}=this.data;
     let { userInfo}=app.globalData;
-    // this.
-    // console.log(this.data.publishTxt);
-    
      let comment={};
      comment.content = publishTxt;
      comment.blogId=blog.uuid;
@@ -83,34 +63,34 @@ Page({
         this.setData({
           publishTxt: ''
         })
+        // setTimeout(() => {
+          this.getComments(false)
+        // }, 1000)
         wx.showToast({
           title,
-          // icon:'none',
-          duration: 2000
+          duration: 1000
         })
-        setTimeout(()=>{
-          this.getComments()
-        },2000)
     });
 
   },
   getBlogContent:function(){
     let { uuid } = this.data;
+    var that = this;
     fetch.get(`article/single/${uuid}`).then((data) => {
+      // console.log(data.module);
         this.setData({
           blog: data.module
         })
+
+        WxParse.wxParse('content', 'html', data.module.content, that,5);
         this.getComments();
       })
   },
   // 获取评论列表
- getComments(){
+ getComments(isShow){
    let { blog } = this.data;
-  //  console.log(blog);
-    // let {}=this.data;
-      
-   fetch.get(`comment/getComments/${blog.uuid}`).then((data) => {
-    //  console.log(data);
+   isShow=isShow==null?true:false;
+   fetch.get(`comment/getComments/${blog.uuid}`, isShow).then((data) => {
       this.setData({
         ary: data
       })
@@ -118,7 +98,6 @@ Page({
  },
 
   onLoad: function (option) {
-    // console.log(option)
     let {title,uuid}=option;
     console.log(uuid);
     this.setData({

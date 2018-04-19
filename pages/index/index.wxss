@@ -3,9 +3,12 @@
   overflow: hidden !important;
   background: #F1F1F1;
 }
+page{
+  overflow: hidden;
+}
 swiper{
   width: 100%;
-  height: 350rpx !important;
+  height: 160px !important;
 }
 
 swiper-item{

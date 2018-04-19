@@ -6,19 +6,26 @@
     <view class='blog-info'>
        <image src="/images/time.png"></image>
        <text>{{blog.date}}</text>
-       <image src="/images/msg.png"></image>
+       <image src="/images/user.png"></image>
        <text>{{blog.pubUser}}</text>
-       <image src="/images/eye.png"></image>
+       <image src="/images/type.png"></image>
        <text>{{blog.channelName}}</text>
     </view>
   </view>
   <!--正文区  -->
   <view class='blog-content'>
-    <view wx:for="{{blog.contentAry}}"  wx:key="index">
+    <import src="../../lib/wxParse/wxParse.wxml"/>
+    <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+
+
+    <!-- <rich-text nodes="{{blog.content}}"></rich-text> -->
+
+    <!-- <view wx:for="{{blog.contentAry}}"  wx:key="index">
         <image wx:if="{{item.type=='image'}}" src="{{item.text}}"></image>
         <view class='br' wx:elif="{{item.text==''}}"></view>
         <text wx:else>{{item.text}}</text>
-    </view>
+    </view> -->
+
   </view>
   <!--评论区  -->
   <view class="comment-area" catchtap='setComment'>
@@ -28,7 +35,11 @@
       <view class="comment-content" >
           <text class='comment-total'>有{{ary.length}}条评论</text>
           <view class='comment-list'>
-             <view catchtap='replay' data-source="{{comment.source}}" data-name="{{comment.userName}}" data-uuid="{{comment.uuid}}" class='comment-item' wx:key="index" wx:for-item="comment" wx:for="{{ary}}">
+            <view class='nodata' wx:if="{{ary.length==0}}">
+                <image src='/images/ku.png'></image>
+                <text>暂无评论</text>
+            </view>
+             <view  catchtap='replay' data-source="{{comment.source}}" data-name="{{comment.userName}}" data-uuid="{{comment.uuid}}" class='comment-item' wx:key="index" wx:for-item="comment" wx:for="{{ary}}">
                 <view class="user-info">
                   <view>
                       <image src="{{comment.pic}}"></image>
@@ -37,7 +48,7 @@
                   <text>{{comment.date}}</text>
                 </view>
                 <text class='comment-detail'>{{comment.content}}</text>
-                <text class='reply-detail'  wx:for-item="child" wx:for="{{comment.children}}"  wx-if="{{comment.children.length>0}}">{{child.userName}}回复{{comment.userName}}:{{child.content}}</text>
+                <text class='reply-detail' wx:key='index'  wx:for-item="child" wx:for="{{comment.children}}"  wx-if="{{comment.children.length>0}}">{{child.userName}}回复{{comment.userName}}:{{child.content}}</text>
              </view>
           </view>
       </view>
@@ -45,7 +56,7 @@
   </view>
   <!--发送评论-->
   <view class="publish">
-    <input placeholder="{{playholder}}" value="{{publishTxt}}" cursor-spacing="200" bindinput="inputPublish"  placeholder-style="color:#ccc"  />
+    <input focus="{{focus}}" placeholder="{{playholder}}" value="{{publishTxt}}" cursor-spacing="200" bindinput="inputPublish"  placeholder-style="color:#ccc"  />
     <text bindtap='send'>发送</text>
   </view>  
 </view>

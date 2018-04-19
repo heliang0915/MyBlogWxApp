@@ -16,10 +16,17 @@ Page({
     pageSize:0,
     total:0,
     isMore:true,
-    isShow:true
+    isShow:true,
+    keyWord:'',
+    contentHeight: wx.getSystemInfoSync().windowHeight-160-56
   },
   onPullDownRefresh:function(){
     // wx.showNavigationBarLoading()
+    this.setData({
+      isMore: true,
+      isShow: true,
+      page: 1
+    })
     this.getBlogList(1,()=>{
       // wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
@@ -41,6 +48,23 @@ Page({
       }
     })
   },
+  searchKey(e){
+    this.setData({
+      keyWord: e.detail.value
+    })
+  },
+  gotoSearchList(e) {
+    let { keyWord } = this.data;
+    wx.navigateTo({
+      url: `/pages/blogs/blogs?title=搜索&key=${keyWord}&desc=${keyWord}&color=#409EFF`,
+      success: function () {
+        console.log("跳转成功");
+      },
+      fail: function (e) {
+        console.log("调用失败...." + JSON.stringify(e));
+      }
+    })
+  },
   gotoTab: function () {
     wx.switchTab({
       url: '/pages/channels/channels',
@@ -50,6 +74,8 @@ Page({
     })
   },
   getBlogList: function (page, callback,type){
+
+    
     fetch.post("article/list", {
       page: page==null?1:page,
       params: {}
@@ -58,12 +84,13 @@ Page({
       let pageSize=data.pageSize;
       let total=data.total;
       blogs.forEach((item) => {
-        console.log(item.pic);
+        // console.log(item);
+        item.date=item.date.split(' ')[0];
         if (item.pic == null){
           item.pic = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522064329150&di=2721521f8b17e71ffea9625563f9a2ce&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F014fa5582d5ae2a84a0e282b39f87e.jpg";
         }
         item.msg = '200';
-        item.time = '20180-01-23';
+        // item.time = '20180-01-23';
         item.eye = '100000';
       })
       var bls = this.data.blogs.concat(data.models);

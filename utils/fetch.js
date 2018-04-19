@@ -4,7 +4,8 @@
   let fetch=config=>{
       let {url,method,data,isShow}=config;
       url = globalConfig.api+url;
-      console.log(`url>>>${url}`);
+      // console.log(`url>>>${url}`);
+      console.log(`%c URL Fetch:${url}`, `color:#409EFF`);
       method=method == null ? "GET":method;
       data=data==null?{}:data;
 

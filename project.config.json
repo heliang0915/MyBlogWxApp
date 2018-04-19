@@ -12,6 +12,7 @@
 	"appid": "wx4abeef7a084d03d6",
 	"projectname": "MyBlogWxApp",
 	"isGameTourist": false,
+	"qcloudRoot": "./server",
 	"condition": {
 		"search": {
 			"current": -1,

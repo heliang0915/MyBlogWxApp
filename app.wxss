@@ -1,3 +1,4 @@
+@import "/lib/wxParse/wxParse.wxss";
 /**app.wxss**/
 .container {
   height: 100%;
@@ -14,7 +15,7 @@
   background: #FFF;
   width: 100%;
   /* display: flex; */
-  padding:60rpx 0 0 0;
+  /* padding:60rpx 0 0 0; */
    height: 580rpx; 
    /* background:red;  */
 }
@@ -59,7 +60,8 @@
   margin-right: 20rpx;
   margin-bottom: 0rpx;
   display: flex;
-  padding-top: 30rpx;
+  margin-top: 20rpx;
+  /* padding-top: 30rpx; */
   /* align-items: center; */
 }
  

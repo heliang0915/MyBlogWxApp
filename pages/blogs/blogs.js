@@ -6,14 +6,17 @@ let fetch = require("../../utils/fetch.js");
 // let page=1;
 Page({
   data: {
+    contentHeight: 0,
     uuid:'',
     desc: '',
     title: '',
     color:'',
+    key:'',
     blogs: [],
     page: 1,
     pageSize: 0,
     total: 0,
+    loading:true,
     isMore: true,
     isShow: true,
     h: wx.getSystemInfoSync().windowHeight + wx.getSystemInfoSync().statusBarHeight
@@ -50,10 +53,24 @@ Page({
     })
   },
   getBlogList: function (page, callback, type) {
+    let {uuid,key} = this.data;
+    let num = (parseFloat(wx.getSystemInfoSync().windowHeight) - 180);
+    this.setData({
+      loading: true,
+      contentHeight: num
+    })
+
+    let params={};
+    if(uuid){
+      params.tag=uuid;
+    }else{
+      params.title = key;
+    }
     fetch.post("article/list", {
       page: page == null ? 1 : page,
-      params: {}
+      params,
     }, true).then((data) => {
+     
       let blogs = data.models;
       let pageSize = data.pageSize;
       let total = data.total;
@@ -78,7 +95,9 @@ Page({
       this.setData({
         blogs: bls,
         pageSize,
-        total
+        total,
+        loading:false
+
       })
       callback == null ? function () { } : callback();
     }).catch((err) => {
@@ -112,36 +131,19 @@ Page({
     }
   },
   onLoad: function (option) {
-    this.getBlogList(1);
-    let { title, uuid, desc, color } = option;
-    console.log(title);
+    let { title, uuid, desc, color, key } = option;
     this.setData({
       uuid,
       title,
       desc,
+      key,
       color
     });
     wx.setNavigationBarTitle({
       title
     })
-
-    try {
-      var res = wx.getSystemInfoSync()
-      console.log(res.model)
-      console.log(res.pixelRatio)
-      console.log(res.windowWidth)
-      console.log(res.windowHeight)
-      console.log(res.statusBarHeight);
-      console.log(res.language)
-      console.log(res.version)
-      console.log(res.platform)
-    } catch (e) {
-      // Do something when catch error
-    }
-  
-  
-  
-  
+    this.getBlogList(1);
+    this.loadMore();    
   }
 
 })

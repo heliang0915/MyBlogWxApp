@@ -3,6 +3,15 @@ let fetch = require("/utils/fetch.js");
 App({
   onLaunch: function () {
     // alert("onLaunch");
+
+
+   let getWindowInfo=()=>{
+     var w=wx.getSystemInfoSync().windowWidth;
+     var h = wx.getSystemInfoSync().windowHeight;
+     this.globalData.w = w;
+     this.globalData.h= h;
+   } 
+
     // 登录系统更新登录时间等信息
     let updateUserInfo = (openid) => {
       fetch.get(`wx/updateInfo/${openid}`,false).then((response) => {
@@ -34,6 +43,7 @@ App({
                        nickName: userInfo.nickName,
                        tid: openid,
                        loginType:1,
+                       roleId:'3e709f4c5ed34dd284de3c7a7e4a7ea3',
                        pic: userInfo.avatarUrl
                      }
                       // 注册用户
@@ -57,6 +67,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    openid:null
+    openid:null,
+    w:null,
+    h:null
   }
 })

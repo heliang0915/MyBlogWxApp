@@ -43,7 +43,9 @@ Page({
       page: 1,
       pageSize:100,
       sort:{order:1},
-      params: {}
+      params: {
+        // channelId:
+      }
     }, true).then((data) => {
         data.models.forEach((channel)=>{
             let index = this.getColor();
