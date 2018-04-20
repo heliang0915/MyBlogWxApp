@@ -31,7 +31,7 @@
             </view>
             <view>
               <image src="/images/eye.png"></image>
-              <text>{{item.eye}}</text>
+              <text>{{item.pv==null?0:item.pv}}</text>
             </view>
           </view>
        </view>

@@ -91,7 +91,7 @@ Page({
         }
         item.msg = '200';
         // item.time = '20180-01-23';
-        item.eye = '100000';
+        // item.eye = '100000';
       })
       var bls = this.data.blogs.concat(data.models);
       // bls= type == "refrsh" ? data.models:bls;
