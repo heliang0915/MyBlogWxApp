@@ -11,7 +11,8 @@ Page({
     type:1,//默认是评论
     blog:{},
     focus:false,
-    ary:[]
+    ary:[],
+    userId: null
   },
   //输入文字
   inputPublish: function(e) {
@@ -96,24 +97,30 @@ Page({
       })
     })
  },
- addPv(){
-   let { uuid } = this.data;
+ addZan(){
+   let { uuid, userId } = this.data;
+   let isZan=true;
    var that = this;
-   fetch.get(`article/addPv/${uuid}`).then((data) => {
-      console.log(data);
+   fetch.get(`wx/blogZan/${userId}/${uuid}/${isZan}`).then((data) => {
+     console.log(data);
    })
  },
   onLoad: function (option) {
     let {title,uuid}=option;
     console.log(uuid);
+  
+
     this.setData({
-       uuid
+       uuid,
+       userId: app.globalData.userId
+    },()=>{
+      console.log(">>>>" + app.globalData.userId);
+      this.getBlogContent();
+      this.addZan();
     });
     wx.setNavigationBarTitle({
       title: option.title
     })
-    // this.addPv();
-    this.getBlogContent();
     
   }
 })

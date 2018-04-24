@@ -4,12 +4,14 @@ const app = getApp()
 
 Page({
   data: {
-    userInfo:{}
+    userInfo:{},
+    userId:null,
   },
   
   onLoad: function () {
     this.setData({
-      userInfo: app.globalData.userInfo
+      userInfo: app.globalData.userInfo,
+      userId: app.globalData.userId
     })
     wx.setNavigationBarTitle({
       title:"我的"

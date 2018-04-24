@@ -35,9 +35,10 @@ App({
                  self.globalData.userInfo = userInfo;
                  self.globalData.openid = openid;
                  //调用后台接口看是否需要注册用户
-                 fetch.get(`wx/exist/${openid}`,false).then((exist) => {
+                 fetch.get(`wx/exist/${openid}`,false).then((uuid) => {
                    //返回true代表已经创建
-                   if (!exist) {
+                   if (!uuid) {
+
                      //创建用户信息
                      let user = {
                        nickName: userInfo.nickName,
@@ -49,10 +50,13 @@ App({
                       // 注册用户
                      fetch.post(`wx/wxRegister`, user).then((result) => {
                         // console.log(result);
+                       let uid = result;
+                       self.globalData.userId = uuid;
                         //登录系统更新登录时间等信息
                         updateUserInfo(openid);
                      })
                    }else{
+                     self.globalData.userId = uuid;
                       //登录系统更新登录时间等信息
                      updateUserInfo(openid);
                    }
@@ -68,6 +72,7 @@ App({
   globalData: {
     userInfo: null,
     openid:null,
+    userId:null,
     w:null,
     h:null
   }
