@@ -1,9 +1,10 @@
 {
   "pages":[
+    "pages/rank/rank",
     "pages/channels/channels",
     "pages/index/index",
     "pages/detail/detail",
-    
+   
     "pages/blogs/blogs",
     "pages/me/me"
   ],
@@ -33,6 +34,12 @@
         "iconPath": "images/channel.png",
         "selectedIconPath": "images/channel-active.png",
         "text": "栏目"
+      },
+      {
+        "pagePath": "pages/rank/rank",
+        "iconPath": "images/rank.png",
+        "selectedIconPath": "images/rank-active.png",
+        "text": "排行"
       },
       {
         "pagePath": "pages/me/me",

@@ -76,7 +76,7 @@ Page({
   getBlogList: function (page, callback,type){
 
     
-    fetch.post("article/list", {
+    fetch.post("wx/blogList", {
       page: page==null?1:page,
       params: {}
     },true).then((data) => {
@@ -89,7 +89,7 @@ Page({
         if (item.pic == null){
           item.pic = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522064329150&di=2721521f8b17e71ffea9625563f9a2ce&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F014fa5582d5ae2a84a0e282b39f87e.jpg";
         }
-        item.msg = '200';
+        // item.msg = '200';
         // item.time = '20180-01-23';
         // item.eye = '100000';
       })

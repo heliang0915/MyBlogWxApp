@@ -27,7 +27,7 @@
             </view>
             <view>
               <image src="/images/msg.png"></image>
-              <text>{{item.msg}}</text>
+              <text>{{item.commentSize}}</text>
             </view>
             <view>
               <image src="/images/eye.png"></image>
