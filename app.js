@@ -15,7 +15,7 @@ App({
     // 登录系统更新登录时间等信息
     let updateUserInfo = (openid) => {
       fetch.get(`wx/updateInfo/${openid}`,false).then((response) => {
-          console.log(response);
+          // console.log(response);
       });
     }
     var self=this;
@@ -23,13 +23,13 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log(res.code)  
+        // console.log(res.code)  
         let {code} = res;
         if (code){
           fetch.get(`wx/login/${code}`,false).then((resp)=>{
              wx.getUserInfo({
                success: function (res) {
-                 console.log(res);
+                //  console.log(res);
                  let userInfo=res.userInfo;
                  let { openid } = resp;
                  self.globalData.userInfo = userInfo;
@@ -48,7 +48,7 @@ App({
                      }
                       // 注册用户
                      fetch.post(`wx/wxRegister`, user).then((result) => {
-                        console.log(result);
+                        // console.log(result);
                         //登录系统更新登录时间等信息
                         updateUserInfo(openid);
                      })

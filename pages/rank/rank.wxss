@@ -1,0 +1,30 @@
+/**channel.wxss**/
+.container{
+  margin: 10prx;
+}
+
+.rank{
+  width: 100%;
+}
+
+.rank-title{
+  width: 100%;
+  /* background: red; */
+  display: flex;
+  font-size: 24rpx;
+  align-items: center;
+}
+
+.rank-title view{
+  flex: 1;
+  padding: 0rpx 40rpx;
+  text-align: center;
+}
+.rank-title view view{
+  padding:20px 40rpx; 
+  padding-bottom: 20rpx;
+}
+.rank-title view.active view{
+   border-bottom: 2px solid #409EFF;
+   /* padding-bottom: 20rpx; */
+}

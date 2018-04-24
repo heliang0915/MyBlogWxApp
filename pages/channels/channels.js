@@ -14,7 +14,6 @@ Page({
   },
   onLoad: function (option) {
     this.getChannels();
-    console.log(option);
     wx.setNavigationBarTitle({
       title:"栏目"
     })

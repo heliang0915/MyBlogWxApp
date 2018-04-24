@@ -76,7 +76,7 @@ Page({
   getBlogContent:function(){
     let { uuid } = this.data;
     var that = this;
-    fetch.get(`article/single/${uuid}`).then((data) => {
+    fetch.get(`wx/blogSingle/${uuid}`).then((data) => {
       // console.log(data.module);
         this.setData({
           blog: data.module
@@ -96,7 +96,13 @@ Page({
       })
     })
  },
-
+ addPv(){
+   let { uuid } = this.data;
+   var that = this;
+   fetch.get(`article/addPv/${uuid}`).then((data) => {
+      console.log(data);
+   })
+ },
   onLoad: function (option) {
     let {title,uuid}=option;
     console.log(uuid);
@@ -106,6 +112,7 @@ Page({
     wx.setNavigationBarTitle({
       title: option.title
     })
+    // this.addPv();
     this.getBlogContent();
     
   }

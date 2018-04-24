@@ -66,7 +66,7 @@ Page({
     }else{
       params.title = key;
     }
-    fetch.post("article/list", {
+    fetch.post("wx/blogList", {
       page: page == null ? 1 : page,
       params,
     }, true).then((data) => {

@@ -1,0 +1,46 @@
+<!--index.wxml-->
+<view class="container">
+    <view class='rank'>
+        <view class="rank-title">
+              <view bindtap='changeIndex' data-index="0" class='{{index==0?"active":""}}'>
+                <view>浏览量</view>
+              </view>
+
+              <view bindtap='changeIndex' data-index="1"  class='{{index==1?"active":""}}'>
+               <view>评论量</view>
+              </view>
+              <view bindtap='changeIndex' data-index="2"  class='{{index==2?"active":""}}'>
+                <view>点赞量</view>
+              </view>
+        </view>
+        <!--list start  -->
+        <scroll-view scroll-y="true" style='height:{{contentHeight}}px' scroll-with-animation="true" class='blog-list' lower-threshold="50" bindscrolltolower="loadMore">
+     <view class='blog-item' data-title="{{item.title}}" data-uuid="{{item.uuid}}" bindtap='gotoDetail' wx:for="{{blogs}}" wx:key="index">
+       <view class='blog-item-left'>
+         <view class='blog-img' style="background:url('{{item.pic}}?w=98') center;background-size:cover;">
+         </view>
+       </view>
+       <view class='blog-item-right'>
+          <text>{{item.title}}</text>
+          <view class="blog-info">
+            <view>
+              <image src="/images/time.png"></image>
+              <text>{{item.date}}</text>
+            </view>
+            <view>
+              <image src="/images/msg.png"></image>
+              <text>{{item.commentSize}}</text>
+            </view>
+            <view>
+              <image src="/images/eye.png"></image>
+              <text>{{item.pv==null?0:item.pv}}</text>
+            </view>
+          </view>
+       </view>
+     </view>
+     <view class='more' style="visibility:{{isShow==true?'visible':'hidden'}}">{{!isMore==true?'没有更多数据了':'正在加载...'}}</view>
+</scroll-view>
+      <!--list end  -->
+
+    </view>
+</view>

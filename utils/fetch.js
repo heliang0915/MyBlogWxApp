@@ -4,6 +4,7 @@
   let fetch=config=>{
       let {url,method,data,isShow}=config;
       url = globalConfig.api+url;
+      // url+=(url.indexOf("?") > -1?'&':'?')+"temp="+Math.random();
       // console.log(`url>>>${url}`);
       console.log(`%c URL Fetch:${url}`, `color:#409EFF`);
       method=method == null ? "GET":method;
@@ -26,7 +27,7 @@
             'content-type': 'application/json' // 默认值
           },
           success: function (res) {
-            console.log(res.data)
+            // console.log(res.data)
             resolve(res.data);
             wx.hideNavigationBarLoading() //完成停止加载
             isShow ?wx.hideLoading():null;
