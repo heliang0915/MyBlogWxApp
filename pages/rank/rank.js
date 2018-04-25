@@ -64,7 +64,7 @@ Page({
     wx.navigateTo({
       url: `/pages/detail/detail?title=${title}&uuid=${uuid}`,
       success: function () {
-        console.log("跳转成功");
+        // console.log("跳转成功");
       },
       fail: function (e) {
         console.log("调用失败...." + JSON.stringify(e));

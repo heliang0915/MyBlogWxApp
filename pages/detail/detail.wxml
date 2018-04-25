@@ -16,8 +16,7 @@
   <view class='blog-content'>
     <import src="../../lib/wxParse/wxParse.wxml"/>
     <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
-
-
+    
     <!-- <rich-text nodes="{{blog.content}}"></rich-text> -->
 
     <!-- <view wx:for="{{blog.contentAry}}"  wx:key="index">
@@ -25,8 +24,10 @@
         <view class='br' wx:elif="{{item.text==''}}"></view>
         <text wx:else>{{item.text}}</text>
     </view> -->
-
   </view>
+   <view class='zan'>
+       <view bindtap='addZan' class='zanbtn {{isZan==true?"unactive":""}}'>{{isZan==true?"已":""}}点赞</view>
+    </view>
   <!--评论区  -->
   <view class="comment-area" catchtap='setComment'>
       <view class="comment-title">

@@ -2,9 +2,6 @@
 let fetch = require("/utils/fetch.js");
 App({
   onLaunch: function () {
-    // alert("onLaunch");
-
-
    let getWindowInfo=()=>{
      var w=wx.getSystemInfoSync().windowWidth;
      var h = wx.getSystemInfoSync().windowHeight;
@@ -31,13 +28,16 @@ App({
                success: function (res) {
                 //  console.log(res);
                  let userInfo=res.userInfo;
-                 let { openid } = resp;
+                 let { openid,token } = resp;
                  self.globalData.userInfo = userInfo;
                  self.globalData.openid = openid;
+                 
                  //调用后台接口看是否需要注册用户
-                 fetch.get(`wx/exist/${openid}`,false).then((uuid) => {
+                 fetch.get(`wx/exist/${openid}`, false).then((token) => {
                    //返回true代表已经创建
-                   if (!uuid) {
+
+                   
+                   if (!token) {
 
                      //创建用户信息
                      let user = {
@@ -50,13 +50,13 @@ App({
                       // 注册用户
                      fetch.post(`wx/wxRegister`, user).then((result) => {
                         // console.log(result);
-                       let uid = result;
-                       self.globalData.userId = uuid;
+                      //  let uid = result;
+                       self.globalData.token = result;
                         //登录系统更新登录时间等信息
                         updateUserInfo(openid);
                      })
                    }else{
-                     self.globalData.userId = uuid;
+                     self.globalData.token = token;
                       //登录系统更新登录时间等信息
                      updateUserInfo(openid);
                    }
@@ -72,7 +72,7 @@ App({
   globalData: {
     userInfo: null,
     openid:null,
-    userId:null,
+    token:null,
     w:null,
     h:null
   }

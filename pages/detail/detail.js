@@ -12,7 +12,8 @@ Page({
     blog:{},
     focus:false,
     ary:[],
-    userId: null
+    token: null,
+    isZan:false
   },
   //输入文字
   inputPublish: function(e) {
@@ -97,26 +98,54 @@ Page({
       })
     })
  },
+
+//获取点赞状态
+getZanState(){
+  let { uuid, token } = this.data;
+  fetch.post(`wx/getZan`, {
+    token,
+    blogId: uuid
+  }).then((isZan) => {
+    console.log(isZan);
+    this.setData({
+        isZan    
+    })
+  });
+},
  addZan(){
-   let { uuid, userId } = this.data;
-   let isZan=true;
+   let { uuid, token ,isZan} = this.data;
+  //  let isZan=this.data.;
+  //  isZan = !isZan;
    var that = this;
-   fetch.get(`wx/blogZan/${userId}/${uuid}/${isZan}`).then((data) => {
-     console.log(data);
+   fetch.post(`wx/blogZan`,{
+     token,
+     isZan: !isZan,
+     blogId: uuid
+   },false).then((data) => {
+    //  console.log(data);
+     wx.showToast({
+       title: `${!isZan == true ?'点赞':'取消'}${data=='ok'?'成功':'失败'}`,
+       icon:'none',
+       duration: 2000
+     })
+
+     this.setData({
+       isZan: !isZan
+     })
+
    })
  },
   onLoad: function (option) {
     let {title,uuid}=option;
-    console.log(uuid);
-  
-
+    // console.log(uuid);
     this.setData({
        uuid,
-       userId: app.globalData.userId
+       token: app.globalData.token
     },()=>{
-      console.log(">>>>" + app.globalData.userId);
+      // console.log(">>>>" + app.globalData.token);
       this.getBlogContent();
-      this.addZan();
+      this.getZanState();
+      // this.addZan();
     });
     wx.setNavigationBarTitle({
       title: option.title
