@@ -34,6 +34,10 @@
               <image src="/images/eye.png"></image>
               <text>{{item.eye}}</text>
             </view>
+             <view>
+              <image src="/images/zan.png"></image>
+              <text>{{item.zanSize==null?0:item.zanSize}}</text>
+            </view>
           </view>
        </view>
      </view>
