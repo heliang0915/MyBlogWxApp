@@ -75,7 +75,6 @@ Page({
       let pageSize = data.pageSize;
       let total = data.total;
       blogs.forEach((item) => {
-        // console.log(item.pic);
         item.date = item.date.split(' ')[0];
         if (item.pic == null) {
           item.pic = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522064329150&di=2721521f8b17e71ffea9625563f9a2ce&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F014fa5582d5ae2a84a0e282b39f87e.jpg";
