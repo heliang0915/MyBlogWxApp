@@ -7,7 +7,18 @@ Page({
     userInfo:{},
     userId:null,
   },
-  
+  goMyZan(e){
+      let { keyWord } = this.data;
+      wx.navigateTo({
+        url: `/pages/mylist/mylist?title=我的点赞`,
+        success: function () {
+          console.log("跳转成功");
+        },
+        fail: function (e) {
+          console.log("调用失败...." + JSON.stringify(e));
+        }
+      })
+  },
   onLoad: function () {
     this.setData({
       userInfo: app.globalData.userInfo,

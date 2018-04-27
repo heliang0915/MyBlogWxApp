@@ -37,7 +37,7 @@
             </view>
              <view>
               <image src="/images/zan.png"></image>
-              <text>{{item.zanCount==null?0:item.zanCount}}</text>
+              <text>{{item.zanSize}}</text>
             </view>
           </view>
        </view>
