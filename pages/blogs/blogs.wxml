@@ -24,19 +24,19 @@
           <view class="blog-info">
             <view>
               <image src="/images/time.png"></image>
-              <text>{{item.time}}</text>
+              <text>{{item.date}}</text>
             </view>
             <view>
               <image src="/images/msg.png"></image>
-              <text>{{item.msg}}</text>
+              <text>{{item.commentSize}}</text>
             </view>
             <view>
               <image src="/images/eye.png"></image>
-              <text>{{item.eye}}</text>
+              <text>{{item.pv}}</text>
             </view>
              <view>
               <image src="/images/zan.png"></image>
-              <text>{{item.zanSize==null?0:item.zanSize}}</text>
+              <text>{{item.zanSize}}</text>
             </view>
           </view>
        </view>
