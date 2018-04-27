@@ -82,7 +82,7 @@ Page({
     } else if (index == 1){
       params.search_field = "cv";
     } else if (index == 2){
-      params.search_field = "pv";
+      params.search_field = "zan";
     }
     fetch.post("wx/blogList", {
       page: page==null?1:page,

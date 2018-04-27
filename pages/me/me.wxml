@@ -5,9 +5,9 @@
       <text>{{userInfo.nickName}}</text> 
   </view>
   <view class='me-list'>
-    <view class='me-item'>
+    <view class='me-item' bindtap='goMyZan'>
       <image src="/images/me-active.png"></image>
-      <text>我的浏览</text>
+      <text>我的点赞</text>
       <image src="/images/arrow.png"></image>
     </view>
     <view class='me-item ls'>
