@@ -1,20 +1,21 @@
 {
-  "pages":[
-    "pages/mylist/mylist",
+  "pages": [
     "pages/index/index",
+    "pages/mylist/mylist",
     "pages/me/me",
-     "pages/channels/channels",
-     "pages/rank/rank",
+    "pages/channels/channels",
+    "pages/rank/rank",
     "pages/detail/detail",
-    "pages/blogs/blogs"
+    "pages/blogs/blogs",
+    "pages/about/about"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "backgroundColor": "#eee",
     "navigationBarBackgroundColor": "#409EFF",
     "navigationBarTitleText": "博客之家",
-    "navigationBarTextStyle":"#FFF",
-    "enablePullDownRefresh":false
+    "navigationBarTextStyle": "#FFF",
+    "enablePullDownRefresh": false
   },
   "debug": false,
   "tabBar": {

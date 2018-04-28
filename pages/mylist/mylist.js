@@ -5,16 +5,60 @@ let fetch = require("../../utils/fetch.js");
 Page({
     data: {
       blogs: [],
+      listType:1,
       page: 1,
       pageSize: 0,
       total: 0,
       isMore: true,
-      isShow: true
+      isShow: true,
+      contentHeight: wx.getSystemInfoSync().windowHeight+60
+    },
+    loadMore: function () {
+      var { pageSize, total, page } = this.data;
+      let maxPage = Math.ceil(total / pageSize);
+      if (page < maxPage) {
+        this.setData({
+          page: ++this.data.page
+        })
+        var page = this.data.page;
+        this.getBlogList(page);
+        console.log("loadMore...." + page);
+        this.setData({
+          isMore: true
+        })
+      } else {
+        var self = this;
+        setTimeout(() => {
+          self.setData({
+            isShow: false
+          })
+        }, 100)
+        self.setData({
+          isMore: false
+        })
+      }
+    },
+    //事件处理函数
+    gotoDetail: function (event) {
+      // console.log("bindtap");
+      let dataset = event.currentTarget.dataset;
+      let { title, uuid } = dataset;
+      wx.navigateTo({
+        url: `/pages/detail/detail?title=${title}&uuid=${uuid}`,
+        success: function () {
+          console.log("跳转成功");
+        },
+        fail: function (e) {
+          console.log("调用失败...." + JSON.stringify(e));
+        }
+      })
     },
     getBlogList: function (page, callback, type) {
-      fetch.post("wx/blogList", {
-        page: page == null ? 1 : page,
-        params: {}
+      let { listType}=this.data;
+      fetch.post("wx/myZanList", {
+        token: app.globalData.token,
+        listType,
+        page,
       }, true).then((data) => {
         let blogs = data.models;
         let pageSize = data.pageSize;
@@ -50,10 +94,12 @@ Page({
       })
     },
     onLoad: function (option) {
-        let { title } = option;
-        title="aaa";
+        let { title ,type} = option;
         wx.setNavigationBarTitle({
           title
+        })
+        this.setData({
+          listType: type
         })
         this.getBlogList(1);
     }

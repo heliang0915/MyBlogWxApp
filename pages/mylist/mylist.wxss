@@ -1,26 +1,35 @@
 /**mylist.wxss**/
-
 .my-list{
    width: 100%; 
-  /* padding: 10px; */
+   background: #f1f1f1;
 }
 .my-item{
   font-size:30rpx;
-  padding: 20rpx;
+  background: #FFF;
+  margin:12rpx 0 12rpx 0;
+  padding: 10rpx 0 6rpx;
 }
-
 .my-title{
-  font-size: 34rpx;
+  font-size: 30rpx;
+  padding:10rpx 20rpx 5rpx 20rpx;
 }
 .my-content{
-  font-size: 30rpx;
+  font-size: 26rpx;
   color: #999;
+  line-height: 30rpx;
+  padding:5rpx 20rpx;
 }
 .my-desc{
+  padding:0rpx 20rpx 10rpx;
   display: flex;
+  align-items: center;
+ justify-content: flex-end;
 }
 .my-desc view{
-  font-size: 30rpx;
+  font-size: 24rpx;
+  margin:5rpx 6rpx;
+  display: flex;
+  align-items: center;
 }
  .my-desc image{
    width:30rpx;

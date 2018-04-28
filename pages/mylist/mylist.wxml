@@ -1,33 +1,38 @@
 <!--index.wxml-->
 <view class="container">
-    <view class="my-list">
+    <scroll-view scroll-y="true" style='height:{{contentHeight}}px' scroll-with-animation="true" lower-threshold="50" bindscrolltolower="loadMore" class="my-list">
 
-       <view class='my-item' wx:for="{{blogs}}" wx:key="index">
+       <view class='my-item' data-title="{{item.title}}" data-uuid="{{item.uuid}}" bindtap='gotoDetail' wx:for="{{blogs}}" wx:key="index">
           <view class='my-title'>
               {{item.title}}
           </view>
           <view class='my-content'>
-              描述{{item.content}}
+              {{item.desc}}
           </view>
           <view class='my-desc'>
              <view>
               <image src="/images/time.png"></image>
               <text>{{item.date}}</text>
             </view>
-            <view>
-              <image src="/images/msg.png"></image>
-              <text>{{item.commentSize}}</text>
-            </view>
-            <view>
-              <image src="/images/eye.png"></image>
-              <text>{{item.pv==null?0:item.pv}}</text>
-            </view>
+            <view class='right'>
+                <view>
+                  <image src="/images/msg.png"></image>
+                  <text>{{item.commentSize}}</text>
+                </view>
+                <view>
+                  <image src="/images/eye.png"></image>
+                  <text>{{item.pv==null?0:item.pv}}</text>
+                </view>
 
-            <view>
-              <image src="/images/zan.png"></image>
-              <text>{{item.zanSize==null?0:item.zanSize}}</text>
+                <view>
+                  <image src="/images/zan.png"></image>
+                  <text>{{item.zanSize==null?0:item.zanSize}}</text>
+                </view>
+
             </view>
           </view>
        </view>
-    </view>
+       <!-- <view class='more' style="display:{{isShow==true?'block':'none'}}">{{!isMore==true?'没有更多数据了':'正在加载...'}}</view> -->
+    </scroll-view>
+    
 </view>

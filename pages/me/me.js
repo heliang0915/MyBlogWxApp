@@ -10,7 +10,7 @@ Page({
   goMyZan(e){
       let { keyWord } = this.data;
       wx.navigateTo({
-        url: `/pages/mylist/mylist?title=我的点赞`,
+        url: `/pages/mylist/mylist?title=我的点赞&type=1`,
         success: function () {
           console.log("跳转成功");
         },
@@ -19,6 +19,29 @@ Page({
         }
       })
   },
+  goMyComment(e) {
+    let { keyWord } = this.data;
+    wx.navigateTo({
+      url: `/pages/mylist/mylist?title=我的评论&type=2`,
+      success: function () {
+        console.log("跳转成功");
+      },
+      fail: function (e) {
+        console.log("调用失败...." + JSON.stringify(e));
+      }
+    })
+  },
+  goAbout(){
+      wx.navigateTo({
+          url: `/pages/about/about?title=关于`,
+          success: function () {
+              console.log("跳转成功");
+          },
+          fail: function (e) {
+              console.log("调用失败...." + JSON.stringify(e));
+          }
+      })
+  } ,
   onLoad: function () {
     this.setData({
       userInfo: app.globalData.userInfo,
