@@ -1,13 +1,12 @@
 {
   "pages":[
-    
+    "pages/mylist/mylist",
     "pages/index/index",
     "pages/me/me",
      "pages/channels/channels",
      "pages/rank/rank",
     "pages/detail/detail",
-    "pages/blogs/blogs",
-    "pages/mylist/mylist"
+    "pages/blogs/blogs"
   ],
   "window":{
     "backgroundTextStyle":"light",

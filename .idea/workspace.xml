@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e319c310-983e-4c9b-9ed4-78bc112cabfe" name="Default" comment="提交代码">
-      <change beforePath="" afterPath="$PROJECT_DIR$/pages/mylist/mylist.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pages/mylist/mylist.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pages/mylist/mylist.wxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pages/mylist/mylist.wxss" />
+    <list default="true" id="e319c310-983e-4c9b-9ed4-78bc112cabfe" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app.json" afterPath="$PROJECT_DIR$/app.json" />
       <change beforePath="$PROJECT_DIR$/config.js" afterPath="$PROJECT_DIR$/config.js" />
-      <change beforePath="$PROJECT_DIR$/pages/blogs/blogs.js" afterPath="$PROJECT_DIR$/pages/blogs/blogs.js" />
-      <change beforePath="$PROJECT_DIR$/pages/me/me.js" afterPath="$PROJECT_DIR$/pages/me/me.js" />
-      <change beforePath="$PROJECT_DIR$/pages/me/me.wxml" afterPath="$PROJECT_DIR$/pages/me/me.wxml" />
-      <change beforePath="$PROJECT_DIR$/pages/rank/rank.js" afterPath="$PROJECT_DIR$/pages/rank/rank.js" />
-      <change beforePath="$PROJECT_DIR$/pages/rank/rank.wxml" afterPath="$PROJECT_DIR$/pages/rank/rank.wxml" />
+      <change beforePath="$PROJECT_DIR$/pages/mylist/mylist.js" afterPath="$PROJECT_DIR$/pages/mylist/mylist.js" />
+      <change beforePath="$PROJECT_DIR$/pages/mylist/mylist.wxml" afterPath="$PROJECT_DIR$/pages/mylist/mylist.wxml" />
+      <change beforePath="$PROJECT_DIR$/pages/mylist/mylist.wxss" afterPath="$PROJECT_DIR$/pages/mylist/mylist.wxss" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -222,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524784286433</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="提交代码">
+      <created>1524836315660</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1524836315660</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">

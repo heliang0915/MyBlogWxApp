@@ -1,4 +1,30 @@
 /**mylist.wxss**/
 
+.my-list{
+   width: 100%; 
+  /* padding: 10px; */
+}
+.my-item{
+  font-size:30rpx;
+  padding: 20rpx;
+}
 
-
+.my-title{
+  font-size: 34rpx;
+}
+.my-content{
+  font-size: 30rpx;
+  color: #999;
+}
+.my-desc{
+  display: flex;
+}
+.my-desc view{
+  font-size: 30rpx;
+}
+ .my-desc image{
+   width:30rpx;
+   height: 30rpx;
+   margin-right: 6rpx;
+}
+ 
