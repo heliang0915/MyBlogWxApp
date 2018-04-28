@@ -1,4 +1,33 @@
 <!--index.wxml-->
 <view class="container">
-    我的点赞
+    <view class="my-list">
+
+       <view class='my-item' wx:for="{{blogs}}" wx:key="index">
+          <view class='my-title'>
+              {{item.title}}
+          </view>
+          <view class='my-content'>
+              描述{{item.content}}
+          </view>
+          <view class='my-desc'>
+             <view>
+              <image src="/images/time.png"></image>
+              <text>{{item.date}}</text>
+            </view>
+            <view>
+              <image src="/images/msg.png"></image>
+              <text>{{item.commentSize}}</text>
+            </view>
+            <view>
+              <image src="/images/eye.png"></image>
+              <text>{{item.pv==null?0:item.pv}}</text>
+            </view>
+
+            <view>
+              <image src="/images/zan.png"></image>
+              <text>{{item.zanSize==null?0:item.zanSize}}</text>
+            </view>
+          </view>
+       </view>
+    </view>
 </view>
