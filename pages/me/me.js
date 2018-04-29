@@ -43,10 +43,18 @@ Page({
       })
   } ,
   onLoad: function () {
-    this.setData({
-      userInfo: app.globalData.userInfo,
-      userId: app.globalData.userId
-    })
+    if (app.globalData.userInfo){
+      this.setData({
+        userInfo: app.globalData.userInfo
+      })
+    }
+
+    if (app.globalData.userId){
+      this.setData({
+        userId: app.globalData.userId
+      })
+    }
+   
     wx.setNavigationBarTitle({
       title:"我的"
     })

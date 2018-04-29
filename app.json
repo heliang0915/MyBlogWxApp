@@ -1,13 +1,14 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/mylist/mylist",
-    "pages/me/me",
     "pages/channels/channels",
     "pages/rank/rank",
+    "pages/mylist/mylist",
     "pages/detail/detail",
     "pages/blogs/blogs",
+    "pages/me/me",
     "pages/about/about"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -49,5 +50,6 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "workers": "workers"
 }
