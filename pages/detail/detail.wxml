@@ -48,8 +48,18 @@
                   </view>
                   <text>{{comment.date}}</text>
                 </view>
-                <text class='comment-detail'>{{comment.content}}</text>
-                <text class='reply-detail' wx:key='index'  wx:for-item="child" wx:for="{{comment.children}}"  wx-if="{{comment.children.length>0}}">{{child.userName}}回复{{comment.userName}}:{{child.content}}</text>
+                <view class='comment-detail'>
+                
+                <!-- <import src="../../lib/wxParse/wxParse.wxml"/>
+                
+    <template is="wxParse" data="{{wxParseData:['comment_'+index]}}"/> -->
+                <!-- {{comment.content}} -->
+                <rich-text nodes="{{comment.content}}"></rich-text>
+                </view>
+                <view class='reply-detail' wx:key='index'  wx:for-item="child" wx:for="{{comment.children}}"  wx-if="{{comment.children.length>0}}">
+                  {{child.userName}}回复{{comment.userName}}:
+                  <rich-text nodes="{{child.content}}"></rich-text>
+                </view>
              </view>
           </view>
       </view>
@@ -57,7 +67,17 @@
   </view>
   <!--发送评论-->
   <view class="publish">
-    <input focus="{{focus}}" placeholder="{{playholder}}" value="{{publishTxt}}" cursor-spacing="200" bindinput="inputPublish"  placeholder-style="color:#ccc"  />
-    <text bindtap='send'>发送</text>
+    <input bindfocus='focusFn' focus="{{focus}}" placeholder="{{playholder}}" value="{{publishTxt}}" cursor-spacing="200" bindinput="inputPublish"  placeholder-style="color:#ccc"  />
+  <view>
+      <image src="/images/biaoqing.png" bindtap='openFaceDialog'></image>
+    </view>
+     <text bindtap='send'>发送</text>
   </view>  
+  <!--表情窗口 -->
+  <view class='faceWrap'>
+    <view class='faceList'  hidden="{{!faceShow}}">
+    <image bindtap="insertSmail"  wx:key="{{index}}" wx:for="{{50}}" src="http://www.jq22.com/demo/qqFace/arclist/{{index+1}}.gif" data-val="[em_{{index+1}}]"></image>
+  </view>
+  </view>
+  
 </view>
