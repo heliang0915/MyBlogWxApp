@@ -2,6 +2,13 @@
 let fetch = require("/utils/fetch.js");
 App({
   onLaunch: function () {
+
+
+  // var worker = wx.createWorker('workers/request/index.js')
+  // worker.postMessage({
+  //     msg: 'hello worker'
+  // })
+
    let getWindowInfo=()=>{
      var w=wx.getSystemInfoSync().windowWidth;
      var h = wx.getSystemInfoSync().windowHeight;
@@ -16,6 +23,10 @@ App({
       });
     }
     var self=this;
+
+
+
+
     // 登录
     wx.login({
       success: res => {
@@ -23,6 +34,7 @@ App({
         // console.log(res.code)  
         let {code} = res;
         if (code){
+            console.log("登录");
           fetch.get(`wx/login/${code}`,false).then((resp)=>{
              wx.getUserInfo({
                success: function (res) {
@@ -31,14 +43,10 @@ App({
                  let { openid,token } = resp;
                  self.globalData.userInfo = userInfo;
                  self.globalData.openid = openid;
-                 
                  //调用后台接口看是否需要注册用户
                  fetch.get(`wx/exist/${openid}`, false).then((token) => {
                    //返回true代表已经创建
-
-                   
                    if (!token) {
-
                      //创建用户信息
                      let user = {
                        nickName: userInfo.nickName,
@@ -49,8 +57,6 @@ App({
                      }
                       // 注册用户
                      fetch.post(`wx/wxRegister`, user).then((result) => {
-                        // console.log(result);
-                      //  let uid = result;
                        self.globalData.token = result;
                         //登录系统更新登录时间等信息
                         updateUserInfo(openid);
@@ -68,6 +74,8 @@ App({
          
       }
     })
+
+
   },
   globalData: {
     userInfo: null,
