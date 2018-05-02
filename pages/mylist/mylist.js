@@ -55,7 +55,7 @@ Page({
     },
     getBlogList: function (page, callback, type) {
       let { listType}=this.data;
-      fetch.post("wx/myZanList", {
+      fetch.post("wx/myList", {
         token: app.globalData.token,
         listType,
         page,
