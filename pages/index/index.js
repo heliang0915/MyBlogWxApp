@@ -20,6 +20,20 @@ Page({
     keyWord:'',
     contentHeight: wx.getSystemInfoSync().windowHeight-160-56
   },
+  onShareAppMessage: function () {
+    return {
+      title: '周边小程序',
+      desc: '找伙伴一起来参与吧',
+      imageUrl:'https://t10.baidu.com/it/u=2148113169,111588862&fm=173&app=25&f=JPEG?w=550&h=310&s=E85057941C114AD6061965E503007036',
+      path: '/pages/about/about',
+      success: (res)=>{
+        console.log("转发成功....");
+      },
+      fail:(res)=>{
+        console.log("转发失败....");
+      }
+    }
+  },
   onPullDownRefresh:function(){
     // wx.showNavigationBarLoading()
     this.setData({

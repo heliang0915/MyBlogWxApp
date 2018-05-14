@@ -1,0 +1,7 @@
+<!--暂无数据-->
+<template name="nodata">
+  <view class='nodata {{isSign==null?"center":""}}'>
+      <image src='/images/ku.png'></image>
+      <text>{{text==null?'暂无数据':text}}</text>
+  </view>
+</template>
