@@ -46,12 +46,12 @@ Page({
         // channelId:
       }
     }, true).then((data) => {
-        data.forEach((channel)=>{
+        data.models.forEach((channel)=>{
             let index = this.getColor();
             channel.color = this.data.colors[index];
         })
         this.setData({
-          channels: data
+          channels: data.models
         })
     });
   }
