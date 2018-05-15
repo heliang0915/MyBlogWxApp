@@ -2,6 +2,7 @@
 let fetch = require("/utils/fetch.js");
 App({
   onLaunch: function () {
+    console.log("onLaunch.....");
 
 
   // var worker = wx.createWorker('workers/request/index.js')
@@ -24,6 +25,7 @@ App({
     }
     var self=this;
 
+console.log(`准备登录`);
 
 
 
@@ -31,7 +33,7 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        // console.log(res.code)  
+        console.log(res.code)  
         let {code} = res;
         if (code){
             console.log("登录");
@@ -72,6 +74,9 @@ App({
            })
          }
          
+      },
+      fail:err=>{
+        console.log('faile'+err);
       }
     })
 

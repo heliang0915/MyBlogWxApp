@@ -1,6 +1,11 @@
 <!--index.wxml-->
 <view class="container">
-    <scroll-view scroll-y="true" style='height:{{contentHeight}}px' scroll-with-animation="true" lower-threshold="50" bindscrolltolower="loadMore" class="my-list">
+    <view wx:if="{{blogs.length==0}}">
+      <!--暂无评论  -->
+            <import src="/pages/nodata/nodata.wxml"/>  
+            <template is="nodata" />
+    </view>
+    <scroll-view wx:else scroll-y="true" style='height:{{contentHeight}}px' scroll-with-animation="true" lower-threshold="50" bindscrolltolower="loadMore" class="my-list">
 
        <view class='my-item' data-title="{{item.title}}" data-uuid="{{item.uuid}}" bindtap='gotoDetail' wx:for="{{blogs}}" wx:key="index">
           <view class='my-title'>

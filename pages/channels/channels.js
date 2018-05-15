@@ -46,7 +46,7 @@ Page({
         // channelId:
       }
     }, true).then((data) => {
-        data.models.forEach((channel)=>{
+      data.models.forEach((channel)=>{
             let index = this.getColor();
             channel.color = this.data.colors[index];
         })

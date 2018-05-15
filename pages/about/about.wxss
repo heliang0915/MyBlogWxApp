@@ -1,13 +1,13 @@
 /**about.wxss**/
 .about-title{
-  font-size: 40rpx;
+  font-size: 34rpx;
   margin: 60rpx 0 30rpx;
   width: 100%;
   text-align: center;
   color: #666;
 }
 .about-content{
-  font-size: 32rpx;
+  font-size: 30rpx;
   text-align: left;
   width: 100%;
 }
