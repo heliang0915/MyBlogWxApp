@@ -1,8 +1,9 @@
 //app.js
 let fetch = require("/utils/fetch.js");
 App({
-  onLaunch: function () {
+  onLaunch: function (options) {
     console.log("onLaunch.....");
+    console.log(JSON.stringify(options));
 
 
   // var worker = wx.createWorker('workers/request/index.js')
@@ -79,8 +80,9 @@ console.log(`准备登录`);
         console.log('faile'+err);
       }
     })
-
-
+  },
+  onPageNotFound() {
+    console.log("没有发现")
   },
   globalData: {
     userInfo: null,
@@ -89,4 +91,5 @@ console.log(`准备登录`);
     w:null,
     h:null
   }
+  
 })
