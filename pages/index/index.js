@@ -3,7 +3,6 @@
 const app = getApp()
 
 let fetch=require("../../utils/fetch.js");
-// let page=1;
 Page({
   data: {
     banners:[
@@ -16,7 +15,6 @@ Page({
     pageSize:0,
     total:0,
     isMore:true,
-    isShow:true,
     keyWord:'',
     contentHeight: wx.getSystemInfoSync().windowHeight-160-56
   },
@@ -34,11 +32,13 @@ Page({
       }
     }
   },
+  onReachBottom:function(){
+      this.loadMore();
+  },
   onPullDownRefresh:function(){
     // wx.showNavigationBarLoading()
     this.setData({
       isMore: true,
-      isShow: true,
       page: 1
     })
     this.getBlogList(1,()=>{
@@ -49,7 +49,6 @@ Page({
   },
   //事件处理函数
   gotoDetail: function (event) {
-    // console.log("bindtap");
     let dataset = event.currentTarget.dataset;
     let {title,uuid}=dataset;
     wx.navigateTo({
@@ -88,27 +87,22 @@ Page({
     })
   },
   getBlogList: function (page, callback,type){
-
-    
     fetch.post("wx/blogList", {
       page: page==null?1:page,
       params: {}
-    },true).then((data) => {
+    },false).then((data) => {
       let blogs = data.models;
       let pageSize=data.pageSize;
       let total=data.total;
       blogs.forEach((item) => {
-        // console.log(item);
-        item.date=item.date.split(' ')[0];
+        if (item.date&&item.date.indexOf('')>-1){
+          item.date = item.date.split(' ')[0];
+        }
         if (item.pic == null){
           item.pic = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522064329150&di=2721521f8b17e71ffea9625563f9a2ce&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F014fa5582d5ae2a84a0e282b39f87e.jpg";
         }
-        // item.msg = '200';
-        // item.time = '20180-01-23';
-        // item.eye = '100000';
       })
       var bls = this.data.blogs.concat(data.models);
-      // bls= type == "refrsh" ? data.models:bls;
       if (type == "refrsh"){
         this.setData({
           blogs:[]
@@ -135,22 +129,20 @@ Page({
         page: ++this.data.page
       })
       var page = this.data.page;
-      this.getBlogList(page);
-      console.log("loadMore...." + page);
-      this.setData({
-        isMore: true
-      })
-    }else{
-      var self=this;
-      setTimeout(()=>{
-        self.setData({
-          isShow: false
+      this.getBlogList(page,()=>{
+        this.setData({
+          isMore: (page < maxPage)
         })
-      },100)
-      self.setData({
-        isMore: false
-      })
+      });
     }
+    
+    // else{
+    //   var self=this;
+    //   self.setData({
+    //     isMore: false
+    //   })
+    // }
+
   },
   onLoad: function () {
     this.getBlogList(1);

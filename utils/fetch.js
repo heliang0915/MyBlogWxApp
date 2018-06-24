@@ -30,7 +30,10 @@
             // console.log(res.data)
             resolve(res.data);
             wx.hideNavigationBarLoading() //完成停止加载
-            isShow ?wx.hideLoading():null;
+            setTimeout(()=>{
+              isShow ? wx.hideLoading() : null;
+            },500)
+           
           },
           fail:function(error){
             reject(error);

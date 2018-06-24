@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "alert-tag": "../../components/alert/alert-component"
+  }
+}

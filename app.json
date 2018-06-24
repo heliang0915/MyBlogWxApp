@@ -10,6 +10,7 @@
     "pages/about/about"
     
   ],
+ 
   "window": {
     "backgroundTextStyle": "light",
     "backgroundColor": "#eee",

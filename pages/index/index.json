@@ -1,3 +1,6 @@
 {
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+    "usingComponents": {
+      "alert-tag": "../../components/alert/alert-component"
+    }
 }
